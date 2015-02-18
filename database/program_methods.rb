@@ -143,16 +143,16 @@ module BeerWikiMethods
   def insert(table_name)
     if table_name == "beers"
       DATABASE.execute("INSERT INTO beers (beer, style_id, 
-                        color, ibu, abv, brewery_id) VALUES 
+                        color, ibu, abv, brewery_id, review, date) VALUES 
                         ('#{@beer}', #{@style_id}, '#{@color}', 
-                        #{@ibu}, #{@abv}, #{@brewery_id})")
+                        #{@ibu}, #{@abv}, #{@brewery_id}, '#{@review}', #{@date})")
       @id = DATABASE.last_insert_row_id
     elsif table_name == "styles"
       DATABASE.execute("INSERT INTO styles (style) VALUES ('#{@style}')")
       @id = DATABASE.last_insert_row_id
     elsif table_name == "breweries"
-      DATABASE.execute("INSERT INTO breweries (brewery, location) VALUES 
-                        ('#{@brewery}', '#{@location}')")
+      DATABASE.execute("INSERT INTO breweries (brewery) VALUES 
+                        ('#{@brewery}')")
       @id = DATABASE.last_insert_row_id
     end
   end 

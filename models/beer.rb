@@ -22,7 +22,7 @@ class Beer
   include BeerWikiMethods
   
   attr_reader :id
-  attr_accessor :beer, :style_id, :color, :ibu, :abv, :brewery_id
+  attr_accessor :beer, :style_id, :color, :ibu, :abv, :brewery_id, :review, :date
   
   def initialize(options)
     @beer        = options["beer"]
@@ -31,6 +31,8 @@ class Beer
     @ibu         = options["ibu"]
     @abv         = options["abv"]
     @brewery_id  = options["brewery_id"]
+    @review      = options["review"]
+    @date        = options["date"]
   end
   
   # Public .fetch_by
