@@ -10,6 +10,8 @@
 # @ibu         - Integer: the bittering units of each beer.
 # @abv         - Integer: the amount of alcohol in each beer.
 # @brewery_id  - Integer: the identifier for each brewery.
+# @review      - String: the beer review entered by the user.
+# @date        - String: the date the beer was entered into the database.
 #
 # Public Methods:
 # None
@@ -19,8 +21,8 @@
 
 class Beer
   
-  include BeerWikiMethods
-  include Helper
+  include BeerWikiMethods #modules for class and instance methods
+  include Helper #helper methods for route handlers
   
   attr_reader :id
   attr_accessor :beer, :style_id, :color, :ibu, :abv, :brewery_id, :review, :date
@@ -37,14 +39,13 @@ class Beer
   end
   
   # Public .fetch_by
-  # Gets a list of beers with a given style or brewery id.
+  # Gets a list of beers matching the key value pair entered.
   #
   # Parameters:
-  # style_id    - Integer: The style id to search for.
-  # brewery_id  - Integer: The brewery id to search for.
+  # options - Hash: The key is the chosen column and the value is the search value for that column.
   #
   # Returns:
-  # Array of beer objects with the given style or brewery id.
+  # An array of objects.
   #
   # State Changes:
   # None

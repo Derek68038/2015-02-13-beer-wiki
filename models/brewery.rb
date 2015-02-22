@@ -5,7 +5,6 @@
 # Attributes:
 # @id        - Integer: the primary key identifier for each brewery.
 # @brewery   - String: the brewery name. 
-# @location  - String: the location (city & state) of the brewery.
 #
 # Public Methods:
 # None

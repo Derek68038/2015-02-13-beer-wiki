@@ -1,10 +1,11 @@
 <div class="top">
-  <h1><em><img src="/hop1.gif" width="50" height="50" alt="Hop"/>  Search For a Beer  <img src="/hop1.gif"         width="50" height="50" alt="Hop"/></h1>
+  <h1><em><img src="/hop1.gif" width="50" height="50" alt="Hop"/>  List All Beers and Reviews  <img                src="/hop1.gif" width="50" height="50" alt="Hop"/></h1>
 </div>
 
 <br>
+<br>
 
-<% @beer_name.each do |b| %>
+<% @beer.each do |b| %>
     <% s_name = DATABASE.execute("SELECT style FROM styles WHERE id = #{b.style_id}") %>
     <% style_name = s_name[0].values[0]  %>
     <% b_name = DATABASE.execute("SELECT brewery FROM breweries WHERE id = #{b.brewery_id}") %>

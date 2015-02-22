@@ -39,6 +39,20 @@ get "/add_beer_results" do
   erb :add_beer_results
 end
 
+get "/search_beer_name" do
+  erb :search_beer_name
+end
+
+get "/search_name_results" do
+  @beer_name = Beer.fetch_by("beer" => params[:beer])
+  erb :search_name_results
+end
+
+get "/list_all_beer" do
+  @beer = Beer.all("beers")
+  erb :list_all_beer
+end
+
 get "/add_brewery" do
   erb :add_brewery
 end
@@ -47,15 +61,6 @@ get "/add_brewery_results" do
   @beer = BeerMapping::API.new("cde4273a2c0ee01fedcd666524ca32bb")
   @brewery = Brewery.new(params)
   erb :add_brewery_results
-end
-
-get "/search_beer_name" do
-  erb :search_beer_name
-end
-
-get "/search_name_results" do
-  @beer_name = Beer.fetch_by("beer" => params[:beer])
-  erb :search_name_results
 end
 
 get "/delete_brewery" do
@@ -68,6 +73,20 @@ get "/delete_brewery_results" do
   @brewery = DATABASE.execute("SELECT brewery FROM breweries WHERE id = #{@delete_brewery.brewery}")
   brewery_id_to_name
   erb :delete_brewery_results
+end
+
+get "/delete_beer" do
+  erb :delete_beer
+end
+
+get "/delete_beer_results" do
+  @id_name = Beer.find("beers" => params[:id])
+  @style = DATABASE.execute("SELECT style FROM styles WHERE id = #{@id_name.style_id}")
+  style_id_to_name
+  @brewery = DATABASE.execute("SELECT brewery FROM breweries WHERE id = #{@id_name.brewery_id}")
+  brewery_id_to_name
+  Beer.delete("beers" => params[:id])
+  erb :delete_beer_results
 end
   
 get "/amber" do
