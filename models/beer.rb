@@ -20,6 +20,7 @@
 class Beer
   
   include BeerWikiMethods
+  include Helper
   
   attr_reader :id
   attr_accessor :beer, :style_id, :color, :ibu, :abv, :brewery_id, :review, :date
@@ -49,17 +50,16 @@ class Beer
   # None
   
   def self.fetch_by(options) #ex: Beer.fetch_by("style_id" => 2)
-    # options.length == 1
     v = []
     k = []
     options.each_key {|key| k << "#{key}"}
     options.each_value {|value| v << "#{value}"}
 
-    field = k[0].to_s
-    search_value = v[0].to_i
+    field = k[0]
+    search_value = v[0]
 
-    search_query = "SELECT * FROM beers WHERE #{field} = #{search_value}"
-
+    search_query = "SELECT * FROM beers WHERE #{field} = '#{search_value}'"
+    # binding.pry
     results = DATABASE.execute("#{search_query}")
     
     results

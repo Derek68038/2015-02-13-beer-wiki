@@ -1,0 +1,39 @@
+<div class="top">
+  <h1><em><img src="/hop1.gif" width="50" height="50" alt="Hop"/>  Add a New Brewery to the Database  <img              src="/hop1.gif" width="50" height="50" alt="Hop"/></h1>
+</div>
+
+<br>
+
+<h2>Please allow 1 - 2 days for approval by the site administrator</h2>
+
+<br>
+
+<p>You have submitted the following new brewery for approval:</p>
+
+
+<p><strong><em><%= "#{@brewery.brewery}" %></em></strong></p> 
+
+<br>
+
+<div>
+<h3>Information</h3>
+  <% @beer.find_by_name("#{@brewery.brewery}") %>
+  <% @beer.locations.each do |location| %>
+    <% if location.state == "NE" %>
+      <p><strong><%= location.name %></strong></p>
+      <p><%= location.street %></p> 
+      <p><%= location.city %>,
+      <%= location.state %>
+      <%= location.zip %></p>
+      <p><%= location.phone %></p>
+      <p><%= "A link to the website will be entered upon approval" %></p></em>
+      <br>
+    <% end %>
+ <% end %>
+</div>
+
+<br>
+
+<div class="enter">
+  <p><a href="/home" title="To homepage">Click here to return to the main homepage</a></p>
+</div>

@@ -5,7 +5,7 @@ DATABASE.execute("CREATE TABLE IF NOT EXISTS styles (id INTEGER PRIMARY
 
 DATABASE.execute("CREATE TABLE IF NOT EXISTS beers (id INTEGER PRIMARY KEY,
           beer TEXT, style_id INTEGER, color TEXT, ibu INTEGER, abv
-          REAL, brewery_id INTEGER, review TEXT, date NUMERIC)")
+          REAL, brewery_id INTEGER, review TEXT, date TEXT)")
 
 DATABASE.execute("CREATE TABLE IF NOT EXISTS breweries (id INTEGER PRIMARY
           KEY, brewery TEXT)")

@@ -1,0 +1,29 @@
+<div class="top">
+  <h1><em><img src="/hop1.gif" width="50" height="50" alt="Hop"/>  Add a Beer to the Database  <img                    src="/hop1.gif" width="50" height="50" alt="Hop"/></h1>
+</div>
+
+<br>
+
+<h2>Success!</h2>
+
+<br>
+
+<p>You've entered the following beer with your own personalized review into the database:</p> 
+
+<ul>
+<li><strong><%= "ID - #{@beer.id}" %></strong></li> 
+<li><strong><%= "Beer Name - #{@beer.beer}" %></strong></li> 
+<li><strong><%= "Style - #{@style_name}" %></strong></li> 
+<li><strong><%= "Color - #{@beer.color}" %></strong></li> 
+<li><strong><%= "IBUs - #{@beer.ibu}" %></strong></li> 
+<li><strong><%= "ABV - #{@beer.abv}%" %></strong></li> 
+<li><strong><%= "Brewery - #{@brewery_name}" %></strong></li>
+<li><strong><%= "Review - #{@beer.review}" %></strong></li>
+<li><strong><%= "Date - #{@beer.date}" %></strong></em></li>
+</ul>
+
+<br>
+
+<div class="enter">
+  <p><a href="/home" title="To homepage">Click here to return to the main homepage</a></p>
+</div>

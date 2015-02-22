@@ -145,14 +145,13 @@ module BeerWikiMethods
       DATABASE.execute("INSERT INTO beers (beer, style_id, 
                         color, ibu, abv, brewery_id, review, date) VALUES 
                         ('#{@beer}', #{@style_id}, '#{@color}', 
-                        #{@ibu}, #{@abv}, #{@brewery_id}, '#{@review}', #{@date})")
+                        #{@ibu}, #{@abv}, #{@brewery_id}, '#{@review}', '#{@date}')")
       @id = DATABASE.last_insert_row_id
     elsif table_name == "styles"
       DATABASE.execute("INSERT INTO styles (style) VALUES ('#{@style}')")
       @id = DATABASE.last_insert_row_id
     elsif table_name == "breweries"
-      DATABASE.execute("INSERT INTO breweries (brewery) VALUES 
-                        ('#{@brewery}')")
+      DATABASE.execute("INSERT INTO breweries (brewery) VALUES ('#{@brewery}')")
       @id = DATABASE.last_insert_row_id
     end
   end 

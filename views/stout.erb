@@ -1,4 +1,4 @@
-<p><h1>American Stout</h1></p>
+<p><em><h1>American Stout</h1></em></p>
 <br>
 <br>
 <div>
@@ -31,6 +31,38 @@
 
 <div>
   <h3>Related Styles</h3>
-  <em>Foreign Stout</em>
-  <p><em>Russian Imperial Stout</em></p>
+  <p><em>Foreign Stout</em></p>
+  <em>Russian Imperial Stout</em>
+</div>
+
+<br>
+
+<div>
+  <h3>Beer Reviews</h3>
+    <% if @beer_style.length == 0 %>
+      <em><%= "There have been no beers entered for this style." %></em>
+    <% else %>
+    <% @beer_style.each do |b| %>
+      <% s_name = DATABASE.execute("SELECT style FROM styles WHERE id = #{b.style_id}") %>
+      <% style_name = s_name[0].values[0] %>
+      <% b_name = DATABASE.execute("SELECT brewery FROM breweries WHERE id = #{b.brewery_id}") %>
+      <% brewery_name = b_name[0].values[0] %>
+      <em><h4><%=b.beer%></h4>  
+        <ul>
+        <li><%= "Style - #{style_name}" %></li> 
+        <li><%= "Color - #{b.color}" %></li> 
+        <li><%= "IBUs - #{b.ibu}" %></li> 
+        <li><%= "ABV - #{b.abv}%" %></li>
+        <li><%= "Brewery - #{brewery_name}" %></li>   
+        <li><%= "Review - #{b.review}" %></li>
+        <li><%= "Date - #{b.date}" %></li></em>
+        </ul>
+      <% end %>
+    <% end %>
+</div>
+
+<br>
+
+<div class="enter">
+  <p><a href="/home" title="To homepage">Click here to return to the main homepage</a></p>
 </div>
