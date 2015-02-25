@@ -10,7 +10,7 @@
 
 <p>You have submitted the following brewery to be deleted from the database:</p>
 <br>
-<% @beer.find_by_name("#{@brewery_name}") %>
+<% @beer.find_by_name("#{@name}") %>
 <% @beer.locations.each do |location| %>
   <% if location.state == "NE" %>
     <em><p><strong><%= location.name %></strong></p>

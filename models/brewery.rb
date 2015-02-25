@@ -17,10 +17,12 @@ class Brewery
   include BeerWikiMethods
   
   attr_reader :id
-  attr_accessor :brewery
+  attr_accessor :brewery, :description
   
   def initialize(options)
-    @brewery  = options["brewery"]
+    @id          = options["id"]
+    @brewery     = options["brewery"]
+    @description = options["description"]
   end
   
 end

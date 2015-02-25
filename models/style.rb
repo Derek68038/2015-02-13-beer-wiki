@@ -17,10 +17,16 @@ class Style
   include BeerWikiMethods
   
   attr_reader :id
-  attr_accessor :style
+  attr_accessor :style, :color, :bitterness, :alcohol, :flavor, :related
   
   def initialize(options)
-    @style = options["style"]
+    @id         = options["id"]
+    @style      = options["style"]
+    @color      = options["color"]
+    @bitterness = options["bitterness"]
+    @alcohol    = options["alcohol"]
+    @flavor     = options["flavor"]
+    @related    = options["related"]
   end
   
 end

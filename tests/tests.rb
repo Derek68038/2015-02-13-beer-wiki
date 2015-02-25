@@ -24,8 +24,9 @@ class BeerTest < Minitest::Test
   end
   
   def test_beer_creation_and_insert_method
+    assert_equal(0, Beer.all("beers").length)
     beer = Beer.new({"beer" => "Certified Evil", "style_id" => 5,"color" => "Black", "ibu" => 55, 
-                     "abv" => 9, "brewery_id" => 9, "review" => "Good", "date" => "02/21/2015"})
+                      "abv" => 9, "brewery_id" => 9, "review" => "Good", "date" => "02/21/2015"})
   
     beer.insert("beers")   
     
@@ -42,17 +43,21 @@ class BeerTest < Minitest::Test
     beer1 = Beer.new({"beer" => "Certified Evil", "style_id" => 5,"color" => "Black", "ibu" => 55, 
                      "abv" => 9, "brewery_id" => 9, "review" => "Good", "date" => "02/21/2015"})
                      
-    beer2 = Beer.new({"beer" => "Certified Evil", "style_id" => 5,"color" => "Black", "ibu" => 55, 
+    beer2 = Beer.new({"beer" => "Certified Not So Evil", "style_id" => 5,"color" => "Black", "ibu" => 55, 
                      "abv" => 9, "brewery_id" => 9, "review" => "Ok", "date" => "02/14/2015"})
 
-    beer3 = Beer.new({"beer" => "Certified Evil", "style_id" => 5,"color" => "Black", "ibu" => 55, 
+    beer3 = Beer.new({"beer" => "Certified Good", "style_id" => 6,"color" => "Black", "ibu" => 55, 
                      "abv" => 9, "brewery_id" => 9, "review" => "Not great", "date" => "02/28/2015"})
 
     beer1.insert("beers")
     beer2.insert("beers")
     beer3.insert("beers")
+    
+    name = Beer.fetch_by("style_id" => 6)
+    b = name[0]
 
     assert_equal(3, Beer.fetch_by("brewery_id" => 9).length)
+    assert_equal("Certified Good", b.beer)
   end
   
   def test_style_id_to_name
@@ -134,7 +139,7 @@ class BeerTest < Minitest::Test
     beer_bar.find_by_name("Beertopia")
     beer_bar.locations
     beers = beer_bar.locations[0]
-
+   
     assert_equal("Beertopia", beers.name)
     assert_equal("3570 Farnam Street", beers.street)
     assert_equal("Omaha", beers.city)

@@ -25,17 +25,19 @@ class Beer
   include Helper #helper methods for route handlers
   
   attr_reader :id
-  attr_accessor :beer, :style_id, :color, :ibu, :abv, :brewery_id, :review, :date
+  attr_accessor :beer, :style_id, :color, :ibu, :abv, :brewery_id, :review, :date, :style_name, :brewery_name
   
   def initialize(options)
-    @beer        = options["beer"]
-    @style_id    = options["style_id"]
-    @color       = options["color"]
-    @ibu         = options["ibu"]
-    @abv         = options["abv"]
-    @brewery_id  = options["brewery_id"]
-    @review      = options["review"]
-    @date        = options["date"]
+    @beer         = options["beer"]
+    @style_id     = options["style_id"]
+    @color        = options["color"]
+    @ibu          = options["ibu"]
+    @abv          = options["abv"]
+    @brewery_id   = options["brewery_id"]
+    @review       = options["review"]
+    @date         = options["date"]
+    @style_name   = options["style_name"]
+    @brewery_name = options["brewery_name"]
   end
   
   # Public .fetch_by

@@ -11,21 +11,9 @@
 </div>
 
 <div class="beers">
-  <strong><a href="/amber" title="American Amber Ale">American Amber Ale</a>
-  <p><a href="/barleywine" title="American Barleywine">American Barleywine</a></p>
-  <p><a href="/brown" title="American Brown Ale">American Brown Ale</a></p>
-  <p><a href="/ipa" title="American India Pale Ale">American India Pale Ale (IPA)</a></p>
-  <p><a href="/pale" title="American Pale Ale">American Pale Ale</a></p>
-  <p><a href="/stout" title="American Stout">American Stout</a></p>
-  <p><a href="/wheat" title="American Wheat Beer">American Wheat Ale</a></p>
-  <p><a href="/bel_blonde" title="Belgian Blonde Ale">Belgian Blonde Ale</a></p>
-  <p><a href="/dark_strong" title="Belgian Dark Strong Ale">Belgian Dark Strong Ale</a></p>
-  <p><a href="/dubbel" title="Belgian Dubbel">Belgian Dubbel</a></p>
-  <p><a href="/bel_pale" title="Belgian Pale Ale">Belgian Pale Ale</a></p>
-  <p><a href="/strong" title="Belgian Strong Ale">Belgian Strong Ale</a></p>
-  <p><a href="/tripel" title="Belgian Tripel">Belgian Tripel</a></p>
-  <p><a href="/blonde" title="Blonde Ale">Blonde Ale</a></p>
-  <p><a href="/pilsner" title="Bohemian Pilsner">Bohemian Pilsner</a></p></strong>  
+  <% @beer_styles.each do |bs| %>
+    <p><strong><a href="/style/<%= bs.id %>" title="<%= bs.style %>"><%= bs.style %></a></strong></p>
+  <% end %>
 </div> 
 
 <div class="breweries">
@@ -33,39 +21,16 @@
 </div>
 
 <div class="places">
-  <strong><a href="/beaver" title="Beaver View">Beaver View Brewing Company</a>
-  <p><a href="/kinkaider" title="Kinkaider">Kinkaider Brewing Company</a></p>
-  <p><a href="/gottberg" title="Gottberg">Gottberg Brewpub</a></p>
-  <p><a href="/spilker" title="Spilker">Spilker Ales</a></p>
-  <p><a href="/thunderhead" title="Thunderhead">Thunderhead Brewing Company</a></p>
-  <p><a href="/lucky" title="Lucky Bucket">Lucky Bucket Brewing Company</a></p>
-  <p><a href="/blue" title="Blue Blood">Blue Blood Brewing Company</a></p>
-  <p><a href="/empyrean" title="Empyrean">Empyrean Brewing Company</a></p>
-  <p><a href="/granite" title="Granite City">Granite City Food and Brewery</a></p>
-  <p><a href="/monks" title="Modern Monks">Modern Monks</a></p>
-  <p><a href="/ploughshare" title="Ploughshare">Ploughshare Brewing Company</a></p>
-  <p><a href="/zipline" title="Zipline">Zipline Brewing Company</a></p>
-  <p><a href="/loop" title="Loop">Loop Brewing Company</a></p>
-  <p><a href="/backswing" title="Backswing">Backswing Brewing Company</a></p>
-  <p><a href="/benson" title="Benson">Benson Brewery</a></p>
-  <p><a href="/brickway" title="Brickway">Brickway Brewery and Distillery</a></p>
-  <p><a href="/farnam" title="Farnam House">Farnam House Brewing Company</a></p>
-  <p><a href="/infusion" title="Infusion">Infusion Brewing Company</a></p>
-  <p><a href="/jaipur" title="Jaipur">Jaipur Restaurant and Brewpub</a></p>
-  <p><a href="/scriptown" title="Scriptown">Scriptown Brewing Company</a></p>
-  <p><a href="/storz" title="Storz">Storz Trophy Room Grill and Brewery</a></p>
-  <p><a href="/upstream" title="Upstream">Upstream Brewing Company</a></p>
-  <p><a href="/scratchtown" title="Scratchtown">Scratchtown Brewing Company</a></p>
-  <p><a href="/nbc" title="Nebraska">Nebraska Brewing Company</a></p>
-  <p><a href="/schilling" title="SchillingBridge">Schilling Bridge Winery and Microbrewery</a></p>
-  <p><a href="/soaring" title="Soaring Wings">Soaring Wings Vineyard and Brewing</a></p></strong> 
-</div>
+  <% @beer_breweries.each do |bb| %>
+    <p><strong><a href="/brewery/<%= bb.id %>" title="<%= bb.brewery %>"><%= bb.brewery %></a></strong></p>
+  <% end %>
+</div> 
 
 <div class="middle">  
   <strong><p><em><h2>Welcome, Nebraska Beer Lovers!</p></h2>
 
-  <p>This site is dedicated to the beer made in Nebraska. Please click on any beer style or brewery listed        on this page for information on that particular item. As a user, you can add any Nebraska made
-     beer to the database with your own custom review, you can delete your personal beer submittals, you'll       be able to search for a particular beer that you're interested in, plus you can submit any additions or      deletions from the brewery list.</p>
+  <p>This site is dedicated to the beer made in Nebraska. Please click on any beer style or brewery listed          on this page for information on that particular item. As a user, you can add any Nebraska made
+     beer to the database with your own custom review, you can delete your personal beer submittals, you'll         be able to search for a particular beer that you're interested in, plus you can submit any additions or        deletions from the brewery list.</p>
   <br>  
   <p>Please choose from the following:</p>
   <ul>
