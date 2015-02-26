@@ -1,0 +1,60 @@
+<p><em><h1><%= @brewery_info.brewery %></h1></em></p>
+
+<div class="picture">
+  <img src="/brewing.jpeg" width="500" height="200" alt="Beaver View"/>
+</div>
+
+<br>
+<br>
+
+<div>
+  <h3>Description</h3>
+  <em><%= @brewery_info.description %></em>
+</div>
+
+<br>
+<br>
+
+<div>
+  <h3>Information</h3>
+    <% @beer.find_by_name("#{@brewery_info.brewery}") %>
+    <% @beer.locations.each do |location| %>
+      <% if location.state == "NE" %>
+        <em><p><strong><%= location.name %></strong></p>
+        <p><%= location.street %></p> 
+        <p><%= location.city %>,
+        <%= location.state %>
+        <%= location.zip %></p>
+        <p><%= location.phone %></em></p>
+        <br>
+      <% end %>
+   <% end %>
+</div>
+
+<br>
+
+<div>
+  <h3>Beer Reviews</h3>
+    <% if @beer_brewery.length == 0 %>
+      <em><%= "There have been no beers entered for this location." %></em>
+    <% else %>
+    <% @beer_brewery.each do |b| %>
+      <em><h4><%=b.beer%></h4>  
+        <ul>
+          <li><%= "Style - #{b.style_id_to_name}" %></li> 
+          <li><%= "Color - #{b.color}" %></li> 
+          <li><%= "IBUs - #{b.ibu}" %></li> 
+          <li><%= "ABV - #{b.abv}%" %></li> 
+          <li><%= "Review - #{b.review}" %></li>
+          <li><%= "Date - #{b.date}" %></li></em>
+        </ul>
+        <br>
+      <% end %>
+    <% end %>
+</div>   
+
+<br>
+
+<div class="enter">
+  <p><a href="/home" title="To homepage">Click here to return to the main homepage</a></p>
+</div>

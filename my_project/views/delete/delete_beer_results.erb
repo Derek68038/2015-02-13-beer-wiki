@@ -1,0 +1,28 @@
+<div class="top">
+  <h1><em><img src="/hop1.gif" width="50" height="50" alt="Hop"/>  Delete a Beer and Review from the             Database  <img src="/hop1.gif" width="50" height="50" alt="Hop"/></h1>
+</div>
+
+<br>
+<br>
+
+<h2>Success!</h2>
+
+<br>
+
+<p>You deleted the following beer and review from the database:</p>
+  <ul> 
+    <li><strong><%= "Beer Name - #{@id_name.beer}" %></strong></li> 
+    <li><strong><%= "Style - #{@id_name.style_name}" %></strong></li> 
+    <li><strong><%= "Color - #{@id_name.color}" %></strong></li> 
+    <li><strong><%= "IBUs - #{@id_name.ibu}" %></strong></li> 
+    <li><strong><%= "ABV - #{@id_name.abv}%" %></strong></li> 
+    <li><strong><%= "Brewery - #{@id_name.brewery_name}" %></strong></li>
+    <li><strong><%= "Review - #{@id_name.review}" %></strong></li>
+    <li><strong><%= "Date - #{@id_name.date}" %></strong></em></li>
+  </ul>
+
+<br>
+
+<div class="enter">
+  <p><a href="/home" title="To homepage">Click here to return to the main homepage</a></p>
+</div>

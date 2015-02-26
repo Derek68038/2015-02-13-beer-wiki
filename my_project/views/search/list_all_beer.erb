@@ -1,0 +1,26 @@
+<div class="top">
+  <h1><em><img src="/hop1.gif" width="50" height="50" alt="Hop"/>  List All Beers and Reviews  <img                src="/hop1.gif" width="50" height="50" alt="Hop"/></em></h1>
+</div>
+
+<br>
+<br>
+
+<% @beer.each do |b| %>
+    <h4><em> <%= b.beer %> </h4>  
+    <ul> 
+      <li><%= "Style - #{b.style_id_to_name}" %></li> 
+      <li><%= "Color - #{b.color}" %></li> 
+      <li><%= "IBUs - #{b.ibu}" %></li> 
+      <li><%= "ABV - #{b.abv}%" %></li> 
+      <li><%= "Brewery - #{b.brewery_id_to_name}" %></li>
+      <li><%= "Review - #{b.review}" %></li>
+      <li><%= "Date - #{b.date}" %></li></em>
+    </ul>
+    <br>
+<% end %>
+
+<br>
+
+<div class="enter">
+  <p><a href="/home" title="To homepage">Click here to return to the main homepage</a></p>
+</div>

@@ -1,0 +1,90 @@
+<div class="top">
+  <h1><em><img src="/hop1.gif" width="50" height="50" alt="Hop"/>  Add a Beer to the Database  <img                    src="/hop1.gif" width="50" height="50" alt="Hop"/></h1>
+</div>
+
+<br>
+
+<form action="/add_beer_results" method="post">
+  <p><h4>Please enter the following information:</h4></p>
+  
+  <p><strong>Name of the Beer:</strong></p>
+    <p><input type="text" name="beer"></p>
+
+  <p><strong>Beer Style:</strong></p>
+    <p><select name="style_id" size="7">
+      <option value="1">1: American Amber Ale</option>
+      <option value="2">2: American Barleywine</option>
+      <option value="3">3: American Brown Ale</option>
+      <option value="4">4: American India Pale Ale (IPA)</option>
+      <option value="5">5: American Pale Ale</option>
+      <option value="6">6: American Stout</option>
+      <option value="7">7: American Wheat Ale</option>
+      <option value="8">8: Belgian Blonde Ale</option>
+      <option value="9">9: Belgian Dark Strong Ale</option>
+      <option value="10">10: Belgian Dubbel</option>
+      <option value="11">11: Belgian Pale Ale</option>
+      <option value="12">12: Belgian Strong Ale</option>
+      <option value="13">13: Belgian Tripel</option>
+      <option value="14">14: Blonde Ale</option>
+      <option value="15">15: Bohemian Pilsner</option>
+      <option value="16">16: Other</option>
+    </select></p>
+        
+  <p><strong>Beer Color:</strong></p>
+    <p><input type="text" name="color"></p>
+      
+  <p><strong>IBUs (bitterness):</strong></p>
+    <p><input type="number" name="ibu"></p>
+      
+  <p><strong>ABV (alcohol in %):</strong></p>
+    <p><input type="number" name="abv" step="any"></p>
+      
+  <p><strong>Brewery:</strong></p>
+    <p><select name="brewery_id" multiple size="10">
+      <option value="1">1: Beaver View Brewing Company</option>
+      <option value="2">2: Kinkaider Brewing Company</option>
+      <option value="3">3: Gottberg Brewpub</option>
+      <option value="4">4: Spilker Ales</option>
+      <option value="5">5: Thunderhead Brewing Company</option>
+      <option value="6">6: Lucky Bucket Brewing Company</option>
+      <option value="7">7: Blue Blood Brewing Company</option>
+      <option value="8">8: Empyrean Brewing Company</option>
+      <option value="9">9: Granite City Food and Brewery</option>
+      <option value="10">10: Modern Monks</option>
+      <option value="11">11: Ploughshare Brewing Company</option>
+      <option value="12">12: Zipline Brewing Company</option>
+      <option value="13">13: Loop Brewing Company</option>
+      <option value="14">14: Backswing Brewing Company</option>
+      <option value="15">15: Benson Brewery</option>
+      <option value="16">16: Brickway Brewery and Distillery</option>
+      <option value="17">17: Farnam House Brewing Company</option>
+      <option value="18">18: Infusion Brewing Company</option>
+      <option value="19">19: Jaipur Restaurant and Brewpub</option>
+      <option value="20">20: Scriptown Brewing Company</option>
+      <option value="21">21: Storz Trophy Room Grill and Brewery</option>
+      <option value="22">22: Upstream Brewing Company</option>
+      <option value="23">23: Scratchtown Brewing Company</option>
+      <option value="24">24: Nebraska Brewing Company</option>
+      <option value="25">25: Schilling Bridge Winery and Microbrewery</option>
+      <option value="26">26: Soaring Wings Vineyard and Brewing</option>
+    </select></p>
+
+  <p><strong>Add Your Review</strong></p>
+    <textarea name="review" rows="10" cols="50"></textarea>
+  
+  <p><strong>Please Enter the Date of Your Review (mm/dd/yyyy):</strong></p>
+    <p><input type="text" name="date"></p>
+    
+  <br>
+  
+  <p><h5>Click the submit button to enter the beer and your review to the database.</h5></em></p>
+
+  <p><input type="submit"></p>
+</form>
+
+<br>
+
+<div class="enter">
+  <p><a href="/home" title="To homepage">Click here to return to the main homepage</a></p>
+</div>
+

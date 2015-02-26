@@ -1,0 +1,60 @@
+<div class="top">
+  <h1><em><img src="/hop1.gif" width="70" height="70" alt="Hop"/>  The Official Site For Nebraska Beer  <img       src="/hop1.gif" width="70" height="70" alt="Hop"/></em></h1>
+</div>
+
+<div class="picture">
+  <img src="/ne2.jpeg" width="350" height="160" alt="Ne2">
+</div>
+
+<div class="styles">
+  <p><h2>Beer Styles</h2></p>  
+</div>
+
+<div class="beers">
+  <% @beer_styles.each do |bs| %>
+    <p><strong><a href="/style/<%= bs.id %>" title="<%= bs.style %>"><%= bs.style %></a></strong></p>
+  <% end %>
+</div> 
+
+<div class="breweries">
+  <p><h2>Breweries</h2></p>
+</div>
+
+<div class="places">
+  <% @beer_breweries.each do |bb| %>
+    <p><strong><a href="/brewery/<%= bb.id %>" title="<%= bb.brewery %>"><%= bb.brewery %></a></strong></p>
+  <% end %>
+</div> 
+
+<div class="middle">  
+  <strong><p><em><h2>Welcome, Nebraska Beer Lovers!</p></h2>
+
+  <p>This site is dedicated to the beer made in Nebraska. Please click on any beer style or brewery listed          on this page for information on that particular item. As a user, you can add any Nebraska made
+     beer to the database with your own custom review, you can delete your personal beer submittals, you'll         be able to search for a particular beer that you're interested in, plus you can submit any additions or        deletions from the brewery list.</p>
+  <br>  
+  <p>Please choose from the following:</p>
+  <ul>
+    <li><a href="/add_beer" title="Add a beer"><u>Add a beer and review to the database</u></a></li>
+    <br>
+    <li><a href="/search_beer_name" title="Search for beer"><u>Search for a particular beer of interest by           name</u></a></li>
+    <br>
+    <li><a href="/list_all_beer" title="List all beer"><u>List all beers and reviews entered into the                database</u></a></li>
+    <br>
+    <li><a href="/add_brewery" title="Add a brewery"><u>Add a new brewery to the database</u></a></li>
+    <br>
+    <li><a href="/delete_brewery" title="Delete a brewery"><u>Delete a brewery that's no longer in                   business</u></a></li>
+    <br>
+    <li><a href="/delete_beer" title="Delete a beer"><u>Delete a beer and review that you have                       entered</u></a></strong></em></li>
+  </ul>
+</div>  
+
+<br>
+  
+<div class="support">
+  <img src="/support.jpeg" width="294" height="171" alt="Support">
+</div>
+
+
+
+  
+
