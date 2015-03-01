@@ -3,18 +3,21 @@
 # Creates new beer objects/records for beers table in the beer wiki database.
 # 
 # Attributes:
-# @id          - Integer: the primary key identifier for each beer.
-# @beer        - String: the beer name. 
-# @style_id    - Integer: the identifier for each style.
-# @color       - String: the color of the given beer.
-# @ibu         - Integer: the bittering units of each beer.
-# @abv         - Integer: the amount of alcohol in each beer.
-# @brewery_id  - Integer: the identifier for each brewery.
-# @review      - String: the beer review entered by the user.
-# @date        - String: the date the beer was entered into the database.
+# @id           - Integer: the primary key identifier for each beer.
+# @name         - String: the beer name. 
+# @style_id     - Integer: the identifier for each style.
+# @color        - String: the color of the given beer.
+# @ibu          - Integer: the bittering units of each beer.
+# @abv          - Integer: the amount of alcohol in each beer.
+# @brewery_id   - Integer: the identifier for each brewery.
+# @review       - String: the beer review entered by the user.
+# @date         - String: the date the beer was entered into the database.
+# @style_name   - String: the name of the style when using it's style id.
+# @brewery_name - String: the name of the brewery when using it's brewery id.
 #
 # Public Methods:
-# None
+# #.show_all_beer_with_brewery_and_style
+# #.fetch_by
 #
 # Private Methods:
 # #initialize
@@ -25,10 +28,12 @@ class Beer
   include Helper #helper methods for route handlers
   
   attr_reader :id
-  attr_accessor :beer, :style_id, :color, :ibu, :abv, :brewery_id, :review, :date, :style_name, :brewery_name
+  attr_accessor :name, :style_id, :color, :ibu, :abv, :brewery_id, :review, :date, :style_name, 
+                :brewery_name
   
   def initialize(options)
-    @beer         = options["beer"]
+    @id           = options["id"]
+    @name         = options["name"]
     @style_id     = options["style_id"]
     @color        = options["color"]
     @ibu          = options["ibu"]
@@ -40,9 +45,31 @@ class Beer
     @brewery_name = options["brewery_name"]
   end
   
-  def fetch_breweries
-    DATABASE.execute("SELECT brewery_id FROM beers_breweries WHERE beer_id = #{id}")
+  # Public: .show_all_beer_with_brewery_and_style
+  # Gets a list of all the beers and correlates it's style & brewery id with respective names.
+  #
+  # Parameters:
+  # None
+  #
+  # Returns: 
+  # An array of objects.
+  #
+  # State Changes:
+  # None
+  
+  def self.show_all_beer_with_brewery_and_style
+    results = DATABASE.execute("SELECT * FROM beers JOIN beers_breweries ON beers.id = 
+                                beers_breweries.beer_id")
+    
+    results_as_objects = []
+
+    results.each do |r|
+      results_as_objects << self.new(r)
+    end
+    
+    results_as_objects
   end
+  
   # Public .fetch_by
   # Gets a list of beers matching the key value pair entered.
   #
@@ -64,8 +91,8 @@ class Beer
     field = k[0]
     search_value = v[0]
 
-    search_query = "SELECT * FROM beers WHERE #{field} = '#{search_value}'"
-    # binding.pry
+    search_query = "SELECT * FROM beers JOIN beers_breweries ON beers.id = beers_breweries.beer_id
+                    WHERE #{field} = '#{search_value}'"
     results = DATABASE.execute("#{search_query}")
     
     results

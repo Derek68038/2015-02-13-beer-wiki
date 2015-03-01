@@ -3,8 +3,13 @@
 # Creates new style objects/records for styles table in beer wiki database.
 # 
 # Attributes:
-# @id      - Integer: the primary key identifier for each style.
-# @style   - String: the style name. 
+# @id         - Integer: the primary key identifier for each style.
+# @type       - String: the style name. 
+# @color      - String: the color range.
+# @bitterness - String: the bitterness range.
+# @alcohol    - String: the alcohol range.
+# @flavor     - String: a short description of the style flavor.
+# @related    - String: related beer styles.
 #
 # Public Methods:
 # None
@@ -17,11 +22,11 @@ class Style
   include BeerWikiMethods
   
   attr_reader :id
-  attr_accessor :style, :color, :bitterness, :alcohol, :flavor, :related
+  attr_accessor :type, :color, :bitterness, :alcohol, :flavor, :related
   
   def initialize(options)
     @id         = options["id"]
-    @style      = options["style"]
+    @type       = options["type"]
     @color      = options["color"]
     @bitterness = options["bitterness"]
     @alcohol    = options["alcohol"]

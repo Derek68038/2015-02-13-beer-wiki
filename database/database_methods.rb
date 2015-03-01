@@ -8,8 +8,8 @@ module BeerWikiMethods
     
     # Input all class methods.
     
-    # Public: .all
-    # Get all the records in the stated table.
+    # Public: .show_all_styles_or_breweries
+    # Gets a list of all the records in the styles or breweries tables.
     #
     # Parameters:
     # table_name - String: The table you want to show records from.
@@ -20,7 +20,7 @@ module BeerWikiMethods
     # State Changes:
     # None
     
-    def all(table_name)
+    def show_all_styles_or_breweries(table_name)
       results = DATABASE.execute("SELECT * FROM #{table_name}")
       
       results_as_objects = []
@@ -102,21 +102,32 @@ module BeerWikiMethods
   
   def insert(table_name)
     if table_name == "beers"
-      DATABASE.execute("INSERT INTO beers (beer, style_id, 
-                        color, ibu, abv, brewery_id, review, date) VALUES 
-                        ('#{@beer}', #{@style_id}, '#{@color}', 
-                        #{@ibu}, #{@abv}, #{@brewery_id}, '#{@review}', '#{@date}')")
+      sql_query = "INSERT INTO beers (name, style_id, color, ibu, abv, review, date) 
+                   VALUES ('#{@name}', #{@style_id}, '#{@color}', #{@ibu}, #{@abv}, '#{@review}',
+                   '#{@date}')"
+      DATABASE.execute(sql_query)
       @id = DATABASE.last_insert_row_id
+      
+      @brewery_id.each do |b|
+        sql_query2 = "INSERT INTO beers_breweries (beer_id, brewery_id) VALUES (#{@id}, #{b})"
+        DATABASE.execute(sql_query2)              
+      end
+      
     elsif table_name == "styles"
-      DATABASE.execute("INSERT INTO styles (style) VALUES ('#{@style}')")
+      DATABASE.execute("INSERT INTO styles (type, color, bitterness, alcohol, flavor, related) 
+                        VALUES ('#{@type}', '#{@color}', '#{@bitterness}', '#{@alcohol}', 
+                        '#{@flavor}', '#{@related}')")
       @id = DATABASE.last_insert_row_id
+    
     elsif table_name == "breweries"
-      DATABASE.execute("INSERT INTO breweries (brewery) VALUES ('#{@brewery}')")
+      DATABASE.execute("INSERT INTO breweries (place, description) VALUES ('#{@place}', 
+                        '#{@description}')")
       @id = DATABASE.last_insert_row_id
     end
   end 
  
   # Public: #style_id_to_name
+  # Fetches the style type which is associated with it's specific style id.
   #
   # Parameters:
   # None
@@ -128,12 +139,32 @@ module BeerWikiMethods
   # Sets @style_name
    
   def style_id_to_name
-    @style = DATABASE.execute("SELECT style FROM styles WHERE id = #{style_id}")
+    @style = DATABASE.execute("SELECT type FROM styles WHERE id = #{style_id}")
     @style_name = @style[0].values[0]
     @style_name
   end
  
-  # Public: #brewery_id_to_name
+  # Public: #brewery_ids_to_name
+  # Fetches the brewery place which is associated with the given brewery id.
+  #
+  # Parameters:
+  # id - Integer: the id of the brewery in the breweries table.
+  #
+  # Returns
+  # @brewery_name: The name of the brewery correlating to it's brewery id.
+  #
+  # State Changes:
+  # Sets @brewery_name
+   
+  def brewery_ids_to_name(id)
+    @brewery = DATABASE.execute("SELECT place FROM breweries JOIN beers_breweries ON breweries.id = 
+    beers_breweries.brewery_id WHERE beers_breweries.brewery_id = #{id}")
+    @brewery_name = @brewery[0].values[0]
+    @brewery_name
+  end
+  
+  # Public: #delete_brewery_id_to_name
+  # Fetches the brewery place based on the name entered.
   #
   # Parameters:
   # None
@@ -143,15 +174,9 @@ module BeerWikiMethods
   #
   # State Changes:
   # Sets @brewery_name
-   
-  def brewery_id_to_name
-    @brewery = DATABASE.execute("SELECT brewery FROM breweries WHERE id = #{brewery_id}")
-    @brewery_name = @brewery[0].values[0] 
-    @brewery_name
-  end
   
   def delete_brewery_id_to_name
-    @brewery = DATABASE.execute("SELECT brewery FROM breweries WHERE id = #{brewery}")
+    @brewery = DATABASE.execute("SELECT place FROM breweries WHERE id = #{place}")
     @brewery_name = @brewery[0].values[0] 
     @brewery_name
   end

@@ -1,3 +1,4 @@
+require 'pry'
 require "sinatra"
 require "sqlite3"
 require "beer_mapping"
@@ -14,7 +15,5 @@ require_relative "controllers/main_pages"
 require_relative "controllers/main_links"
 require_relative "controllers/delete_routes"
 require_relative "controllers/add_routes"
-
-
 
 helpers Helper

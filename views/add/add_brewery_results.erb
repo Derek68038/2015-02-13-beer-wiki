@@ -1,9 +1,10 @@
 <div class="top">
-  <h1><em><img src="/hop1.gif" width="50" height="50" alt="Hop"/>  Add a New Brewery to the Database  <img              src="/hop1.gif" width="50" height="50" alt="Hop"/></h1>
+  <h1><em><img src="/hop1.gif" width="50" height="50" alt="Hop"/>  Add a Brewery  <img src="/hop1.gif" width="50" height="50" alt="Hop"/></h1>
 </div>
 
 <br>
 
+<div class="style_attributes">
 <h2>Please allow 1 - 2 days for approval by the site administrator</h2>
 
 <br>
@@ -11,13 +12,13 @@
 <p>You have submitted the following new brewery for approval:</p>
 
 
-<p><strong><em><%= "#{@brewery.brewery}" %></em></strong></p> 
+<p><strong><em><%= "#{@brewery.place}" %></em></strong></p> 
 
 <br>
 
 <div>
 <h3>Information</h3>
-  <% @beer.find_by_name("#{@brewery.brewery}") %>
+  <% @beer.find_by_name("#{@brewery.place}") %>
   <% @beer.locations.each do |location| %>
     <% if location.state == "NE" %>
       <p><strong><%= location.name %></strong></p>
@@ -30,7 +31,7 @@
     <% end %>
  <% end %>
 </div>
-
+</div>
 <br>
 
 <div class="enter">

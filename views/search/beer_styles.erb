@@ -1,0 +1,19 @@
+<div class="top">
+  <h1><em><img src="/hop1.gif" width="50" height="50" alt="Hop"/>  Beer Styles  <img src="/hop1.gif" width="50" height="50" alt="Hop"/></em></h1>
+</div>
+
+<br>
+<br>
+
+<div class="beers">
+  <% @beer_styles.each do |bs| %>
+    <p><strong><a href="/style/<%= bs.id %>" title="<%= bs.type %>"><%= bs.type %></a></strong></p>
+    <br>
+  <% end %>
+</div> 
+
+<br>
+
+<div class="enter">
+  <p><a href="/home" title="To homepage">Click here to return to the main homepage</a></p>
+</div>

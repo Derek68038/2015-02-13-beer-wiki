@@ -1,14 +1,15 @@
 <div class="top">
-  <h1><em><img src="/hop1.gif" width="50" height="50" alt="Hop"/>  Delete an Existing Brewery from the             Database  <img src="/hop1.gif" width="50" height="50" alt="Hop"/></h1>
+  <h1><em><img src="/hop1.gif" width="50" height="50" alt="Hop"/>  Delete a Brewery  <img src="/hop1.gif" width="50" height="50" alt="Hop"/></h1>
 </div>
 
 <br>
 
+<div class="style_attributes">
 <h2>Please allow 1 - 2 days for approval by the site administrator</h2>
 
 <br>
 
-<p>You have submitted the following brewery to be deleted from the database:</p>
+<p>You have submitted the following brewery to be <u>deleted</u>:</p>
 <br>
 <% @beer.find_by_name("#{@name}") %>
 <% @beer.locations.each do |location| %>
@@ -22,6 +23,7 @@
     <br>
   <% end %>
 <% end %>
+</div>
 
 <br>
 

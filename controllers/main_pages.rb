@@ -1,13 +1,11 @@
 get "/" do
-  erb :"main_pages/enter"
+  erb :"homepages/enter"
 end
 
 get "/home" do
-  @beer_styles = Style.all("styles")
-  @beer_breweries = Brewery.all("breweries")
-  erb :"main_pages/home"
+  erb :"homepages/home"
 end
 
 get "/not_allowed" do
-  erb :"main_pages/not_allowed"
+  erb :"homepages/not_allowed"
 end

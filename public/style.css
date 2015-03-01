@@ -1,16 +1,20 @@
 .top {
-  border: ridge;
-  border-width: 10px;
-  border-color: black;
-  background-color: goldenrod;
-  margin-left: 50px;
-  margin-right: 50px;
-  margin-top: 30px;
-  padding-bottom: 10px;
+border: ridge;
+border-width: 5px;
+border-color: black;
+background-color: goldenrod;
+margin-left: -8px;
+margin-top: -8px;
+padding-bottom: 20px;
+position: fixed;
+z-index: 1;
+font-size: 68%;
+min-width: 97%;
 }
 
 .enter {
   text-align: center;
+  margin-top: 147px;
 }
 
 h1 {
@@ -24,31 +28,46 @@ h3 {
 }
 
 .picture {
-  text-align: center;
-  position: relative; 
-  top: -10px; 
+text-align: center;
+position: relative;
+top: 140px;
 }
 
 img {
   position: relative; 
-  top: 10px; 
+  top: 18px; 
 }
 
 .styles {
-  font-family: monospace;
-  text-decoration: underline;
-  position: relative;
-  left: 10px;
-  top: 35px;
+font-family: monospace;
+text-decoration: underline;
+position: relative;
+top: 185px;
+text-align: center;
+font-size: 95%;
+}
+
+.styles:hover {
+  background: goldenrod;
+}
+
+.style_attributes {
+  margin-top: 167px;
+}
+
+.breweries:hover {
+  background: goldenrod;
 }
 
 .beers {
+  text-align: center;
+  margin-top: 160px;
+  font-size: 17px;
   font-family: monospace;
-  font-size: 100%;
-  position: relative;
-  top: 35px;
-  left: 10px;
-  right: 500px;
+}
+
+.beers p:hover {
+  background: goldenrod;
 }
 
 a {
@@ -57,43 +76,54 @@ a {
 }
 
 .breweries {
-  font-family: monospace;
-  text-decoration: underline;
-  text-align: right;
-  position: relative;
-  top: -418px;
-  right: 10px;
+font-family: monospace;
+text-decoration: underline;
+position: relative;
+top: 200px;
+text-align: center;
+font-size: 95%;
 }
 
 .places {
-  font-family: monospace;
-  font-size: 100%;
-  text-align: right;
-  margin: 50px;
-  position: relative;
-  top: -450px;
-  right: -40px;
+font-family: monospace;
+font-size: 85%;
+position: relative;
+top: 190px;
 }
 
 .middle {
-  font-family: monospace;
-  text-align: left;
-  margin-left: 35%;
-  margin-right: 35%;
-  position: relative;
-  top: -750px;
-  border: solid;
-  border-width: 2px;
-  border-color: black;
-  background-color: goldenrod;
-  margin-left: 0%;
-  margin-right: 40%;
+font-family: monospace;
+text-align: center;
+position: relative;
+top: 243px;
+border: solid;
+border-width: 2px;
+border-color: black;
+background-color: goldenrod;
+margin-left: 9%;
+margin-right: 10%;
+padding: 2px;
+font-size: 86%;
+}
+
+.middle li:hover {
+  background: white;
+}
+
+.add{
+  margin-top: 240px;
+}
+
+ul {
+list-style: none;
+padding: 8px;
+font-size: 15px;
 }
 
 .support {
-  text-align: center;
-  position: relative;
-  top: -750px;
+text-align: center;
+position: relative;
+top: 226px;
 }
 
 body {

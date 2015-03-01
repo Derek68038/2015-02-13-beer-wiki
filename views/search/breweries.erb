@@ -1,12 +1,14 @@
-<p><em><h1><%= @brewery_info.brewery %></h1></em></p>
-
+<div class="top">
+<p><em><h1><%= @brewery_info.place %></h1></em></p>
+</div>
 <div class="picture">
-  <img src="/brewing.jpeg" width="500" height="200" alt="Beaver View"/>
+  <img src="/brewing.jpeg" width="200" height="100" alt="Beaver View"/>
 </div>
 
 <br>
 <br>
 
+<div class="style_attributes">
 <div>
   <h3>Description</h3>
   <em><%= @brewery_info.description %></em>
@@ -17,7 +19,7 @@
 
 <div>
   <h3>Information</h3>
-    <% @beer.find_by_name("#{@brewery_info.brewery}") %>
+    <% @beer.find_by_name("#{@brewery_info.place}") %>
     <% @beer.locations.each do |location| %>
       <% if location.state == "NE" %>
         <em><p><strong><%= location.name %></strong></p>
@@ -39,12 +41,13 @@
       <em><%= "There have been no beers entered for this location." %></em>
     <% else %>
     <% @beer_brewery.each do |b| %>
-      <em><h4><%=b.beer%></h4>  
+      <em><h4><%=b.name%></h4>
         <ul>
-          <li><%= "Style - #{b.style_id_to_name}" %></li> 
-          <li><%= "Color - #{b.color}" %></li> 
-          <li><%= "IBUs - #{b.ibu}" %></li> 
-          <li><%= "ABV - #{b.abv}%" %></li> 
+          <li><%= "ID - #{b.id}" %></li>
+          <li><%= "Style - #{b.style_id_to_name}" %></li>
+          <li><%= "Color - #{b.color}" %></li>
+          <li><%= "IBUs - #{b.ibu}" %></li>
+          <li><%= "ABV - #{b.abv}%" %></li>
           <li><%= "Review - #{b.review}" %></li>
           <li><%= "Date - #{b.date}" %></li></em>
         </ul>
@@ -52,6 +55,7 @@
       <% end %>
     <% end %>
 </div>   
+</div>
 
 <br>
 
