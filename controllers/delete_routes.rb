@@ -14,7 +14,6 @@ get "/delete_beer" do
 end
 
 post "/delete_beer_results" do
-  # @id_name = Beer.find("beers" => params[:id]) # this was used when I had a delete results page.
   Beer.delete("beers" => params[:id])
   redirect "/list_all_beer"
 end
