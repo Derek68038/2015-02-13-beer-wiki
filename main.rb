@@ -1,4 +1,5 @@
-require 'pry'
+require 'rubygems'
+require 'bundler/setup'
 require "sinatra"
 require "sqlite3"
 require "beer_mapping"

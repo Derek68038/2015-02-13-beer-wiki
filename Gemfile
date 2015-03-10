@@ -1,0 +1,5 @@
+source 'https://rubygems.org'
+gem 'beer_mapping'
+gem 'hpricot'
+gem 'sinatra'
+gem 'sqlite3'
