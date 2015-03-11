@@ -13,11 +13,11 @@
 <ul>
   <li><strong><%= "ID - #{@beer.id}" %></strong></li> 
   <li><strong><%= "Beer Name - #{@beer.name}" %></strong></li> 
-  <li><strong><%= "Style - #{@beer.style_name}" %></strong></li> 
+  <li><strong><%= "Style - #{@beer.style.category}" %></strong></li> 
   <li><strong><%= "Color - #{@beer.color}" %></strong></li> 
   <li><strong><%= "IBUs - #{@beer.ibu}" %></strong></li> 
   <li><strong><%= "ABV - #{@beer.abv}%" %></strong></li> 
-  <li><strong><%= "Brewery - #{@beer.brewery_name}" %></strong></li>
+  <li><strong><%= "Brewery - #{@beer.breweries_comma_separated}" %></strong></li>
   <li><strong><%= "Review - #{@beer.review}" %></strong></li>
   <li><strong><%= "Date - #{@beer.date}" %></strong></em></li>
 </ul>

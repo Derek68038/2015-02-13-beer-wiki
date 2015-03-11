@@ -1,5 +1,5 @@
 <div class="top">
-<p><em><h1><%= @style_info.type %></h1></em></p>
+<p><em><h1><%= @style_info.category %></h1></em></p>
 </div>
 <br>
 <br>
@@ -44,15 +44,15 @@
       <% if @beer_style.length == 0 %>
         <em><%= "There have been no beers entered for this style." %></em>
       <% else %>
-      <% @beer_style.each do |b| %>
+      <% @beer_style.find_each do |b| %>
         <em><h4><%=b.name%></h4>  
           <ul>
             <li><%= "ID - #{b.id}" %></li>
-            <li><%= "Style - #{b.style_id_to_name}" %></li> 
+            <li><%= "Style - #{b.style.category}" %></li>
             <li><%= "Color - #{b.color}" %></li> 
             <li><%= "IBUs - #{b.ibu}" %></li> 
             <li><%= "ABV - #{b.abv}%" %></li>
-            <li><%= "Brewery - #{b.brewery_ids_to_name(b.brewery_id)}" %></li> 
+            <li><%= "Brewery - #{b.breweries_comma_separated}" %></li>
             <li><%= "Review - #{b.review}" %></li>
             <li><%= "Date - #{b.date}" %></li></em>
           </ul>

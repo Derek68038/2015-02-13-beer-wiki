@@ -16,94 +16,38 @@
 # @brewery_name - String: the name of the brewery when using it's brewery id.
 #
 # Public Methods:
-# #.show_all_beer_with_brewery_and_style
-# #.fetch_by
+# #breweries_comma_separated
 #
 # Private Methods:
 # #initialize
 
-class Beer
+class Beer < ActiveRecord::Base
+  belongs_to :style
+  has_and_belongs_to_many :breweries, join_table: :beers_breweries
   
   include BeerWikiMethods #modules for class and instance methods
   include Helper #helper methods for route handlers
   
-  attr_reader :id
-  attr_accessor :name, :style_id, :color, :ibu, :abv, :brewery_id, :review, :date, :style_name, 
-                :brewery_name
-  
-  def initialize(options)
-    @id           = options["id"]
-    @name         = options["name"]
-    @style_id     = options["style_id"]
-    @color        = options["color"]
-    @ibu          = options["ibu"]
-    @abv          = options["abv"]
-    @brewery_id   = options["brewery_id"]
-    @review       = options["review"]
-    @date         = options["date"]
-    @style_name   = options["style_name"]
-    @brewery_name = options["brewery_name"]
-  end
-  
-  # Public: .show_all_beer_with_brewery_and_style
-  # Gets a list of all the beers and correlates it's style & brewery id with respective names.
+  # Public: #brewery_comma_name
+  # Shows the brewery or breweries associated with an individual beer record.
   #
   # Parameters:
-  # None
+  # None.
   #
-  # Returns: 
-  # An array of objects.
-  #
-  # State Changes:
-  # None
-  
-  def self.show_all_beer_with_brewery_and_style
-    results = DATABASE.execute("SELECT * FROM beers JOIN beers_breweries ON beers.id = 
-                                beers_breweries.beer_id")
-    
-    results_as_objects = []
-
-    results.each do |r|
-      results_as_objects << self.new(r)
-    end
-    
-    results_as_objects
-  end
-  
-  # Public .fetch_by
-  # Gets a list of beers matching the key value pair entered.
-  #
-  # Parameters:
-  # options - Hash: The key is the chosen column and the value is the search value for that column.
-  #
-  # Returns:
-  # An array of objects.
+  # Returns
+  # brewery_names.join(", "): A string of brewery names separated by commas.
   #
   # State Changes:
-  # None
-  
-  def self.fetch_by(options) #ex: Beer.fetch_by("style_id" => 2)
-    v = []
-    k = []
-    options.each_key {|key| k << "#{key}"}
-    options.each_value {|value| v << "#{value}"}
+  # None.
 
-    field = k[0]
-    search_value = v[0]
-
-    search_query = "SELECT * FROM beers JOIN beers_breweries ON beers.id = beers_breweries.beer_id
-                    WHERE #{field} = '#{search_value}'"
-    results = DATABASE.execute("#{search_query}")
+  def breweries_comma_separated
+    brewery_names = []
     
-    results
-
-    results_as_objects = []
-
-    results.each do |r|
-      results_as_objects << self.new(r)
+    breweries.each do |b|    #equivalent to self.breweries.each
+      brewery_names << b.place
     end
-
-    results_as_objects 
+    
+    brewery_names.join(", ")
   end
   
-end
+ end

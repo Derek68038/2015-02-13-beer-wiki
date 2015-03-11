@@ -17,21 +17,9 @@
 # Private Methods:
 # #initialize
 
-class Style
+class Style < ActiveRecord::Base
+  has_many :beers
   
   include BeerWikiMethods
-  
-  attr_reader :id
-  attr_accessor :type, :color, :bitterness, :alcohol, :flavor, :related
-  
-  def initialize(options)
-    @id         = options["id"]
-    @type       = options["type"]
-    @color      = options["color"]
-    @bitterness = options["bitterness"]
-    @alcohol    = options["alcohol"]
-    @flavor     = options["flavor"]
-    @related    = options["related"]
-  end
   
 end

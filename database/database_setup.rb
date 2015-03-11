@@ -1,6 +1,6 @@
 DATABASE.results_as_hash = true
 
-DATABASE.execute("CREATE TABLE IF NOT EXISTS styles (id INTEGER PRIMARY KEY, type TEXT, color TEXT, 
+DATABASE.execute("CREATE TABLE IF NOT EXISTS styles (id INTEGER PRIMARY KEY, category TEXT, color TEXT, 
                   bitterness TEXT, alcohol TEXT, flavor TEXT, related TEXT)")
 
 DATABASE.execute("CREATE TABLE IF NOT EXISTS beers (id INTEGER PRIMARY KEY, name TEXT, style_id 

@@ -4,21 +4,26 @@
 
 <br>
 <div class="style_attributes">
-<% @beer_name.each do |b| %>
-    <h4> <%= b.name %> </h4>  
-    <ul>
-      <li><%= "ID - #{b.id}" %></li> 
-      <li><%= "Style - #{b.style_id_to_name}" %></li> 
-      <li><%= "Color - #{b.color}" %></li> 
-      <li><%= "IBUs - #{b.ibu}" %></li> 
-      <li><%= "ABV - #{b.abv}%" %></li> 
-      <li><%= "Brewery - #{b.brewery_ids_to_name(b.brewery_id)}" %></li>
-      <li><%= "Review - #{b.review}" %></li>
-      <li><%= "Date - #{b.date}" %></li></em>
-    </ul>
-    <br>
-<% end %>
+  <% if @beer_name.length == 0 %>
+    <h4 class="enter"><%= "Sorry, we could not find your beer. Please try again." %></h4>
+  <% else %>
+    <% @beer_name.each do |b| %>
+        <h4> <%= b.name %> </h4>  
+        <ul>
+          <li><%= "ID - #{b.id}" %></li> 
+          <li><%= "Style - #{b.style.category}" %></li> 
+          <li><%= "Color - #{b.color}" %></li> 
+          <li><%= "IBUs - #{b.ibu}" %></li> 
+          <li><%= "ABV - #{b.abv}%" %></li> 
+          <li><%= "Brewery - #{b.breweries_comma_separated}" %></li>
+          <li><%= "Review - #{b.review}" %></li>
+          <li><%= "Date - #{b.date}" %></li></em>
+        </ul>
+        <br>
+    <% end %>
+  <% end %>    
 </div>
+
 <br>
 
 <div class="enter">

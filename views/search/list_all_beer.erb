@@ -10,11 +10,11 @@
     <h4><em> <%= b.name %> </h4>  
     <ul>
       <li><%= "ID - #{b.id}" %></li> 
-      <li><%= "Style - #{b.style_id_to_name}" %></li>
+      <li><%= "Style - #{b.style.category}" %></li>
       <li><%= "Color - #{b.color}" %></li> 
       <li><%= "IBUs - #{b.ibu}" %></li> 
       <li><%= "ABV - #{b.abv}%" %></li> 
-      <li><%= "Brewery - #{b.brewery_ids_to_name(b.brewery_id)}" %></li>
+      <li><%= "Brewery - #{b.breweries_comma_separated}" %></li>
       <li><%= "Review - #{b.review}" %></li>
       <li><%= "Date - #{b.date}" %></li></em>
     </ul>

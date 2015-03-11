@@ -3,9 +3,8 @@ get "/delete_brewery" do
 end
 
 get "/delete_brewery_results" do
-  beer_mapper
-  delete_brewery = Brewery.new(params)
-  @name = delete_brewery.delete_brewery_id_to_name
+  beer_mapper     # @beer defined by beer_mapper
+  @brewery = Brewery.find(params["place"])
   erb :"delete/delete_brewery_results"
 end
 
@@ -14,6 +13,6 @@ get "/delete_beer" do
 end
 
 post "/delete_beer_results" do
-  Beer.delete("beers" => params[:id])
+  Beer.delete(params[:id])         
   redirect "/list_all_beer"
 end

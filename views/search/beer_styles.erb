@@ -7,7 +7,7 @@
 
 <div class="beers">
   <% @beer_styles.each do |bs| %>
-    <p><strong><a href="/style/<%= bs.id %>" title="<%= bs.type %>"><%= bs.type %></a></strong></p>
+    <p><strong><a href="/style/<%= bs.id %>" title="<%= bs.category %>"><%= bs.category %></a></strong></p>
     <br>
   <% end %>
 </div> 

@@ -4,8 +4,7 @@ end
 
 post "/add_beer_results" do
   @beer = Beer.new(params)
-  @beer.insert("beers")
-  @beer.style_id_to_name
+  @beer.save
   redirect "/list_all_beer"
 end
 

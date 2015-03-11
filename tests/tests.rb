@@ -65,12 +65,12 @@ class BeerTest < Minitest::Test
     beer = Beer.new({"name" => "Certified Evil", "style_id" => 1,"color" => "Black", "ibu" => 55, 
                      "abv" => 9, "brewery_id" => ["9"], "review" => "Good", "date" => "02/21/2015"})
 
-    beer_style = Style.new({"type" => "American Stout"})
+    beer_style = Style.new({"category" => "American Stout"})
 
     beer.insert("beers")
     beer_style.insert("styles")
 
-    style = DATABASE.execute("SELECT type FROM styles WHERE id = #{beer.style_id}")
+    style = DATABASE.execute("SELECT category FROM styles WHERE id = #{beer.style_id}")
     style_name = style[0].values[0]
 
     assert_equal("American Stout", style_name)

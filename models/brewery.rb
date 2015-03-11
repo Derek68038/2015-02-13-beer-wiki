@@ -13,17 +13,9 @@
 # Private Methods:
 # #initialize
 
-class Brewery
+class Brewery < ActiveRecord::Base
+  has_and_belongs_to_many :beers, join_table: :beers_breweries
   
   include BeerWikiMethods
-  
-  attr_reader :id
-  attr_accessor :place, :description
-  
-  def initialize(options)
-    @id          = options["id"]
-    @place       = options["place"]
-    @description = options["description"]
-  end
   
 end
