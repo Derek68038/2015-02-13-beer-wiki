@@ -5,10 +5,13 @@ end
 post "/verify" do
   @user = User.find_by_user(params[:user])
   if @user == nil
-    @user = User.create(user: "#{params[:user]}", password: "#{params[:password]}")
+    @user = User.create(user: "#{params[:user]}", password: BCrypt::Password.create(params[:password]))
   end
-  my_password = BCrypt::Password.create(params[:password])
-  if my_password == @user.password
+  
+  crypt_password = BCrypt::Password.new(@user.password)
+
+  if crypt_password == params[:password]
+    session[:user_id] = @user.id
     redirect "/home"
   else 
     redirect "/not_allowed" 

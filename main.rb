@@ -6,6 +6,7 @@ require "sqlite3"
 require "beer_mapping"
 require "bcrypt"
 require "pry"
+enable :sessions
 
 DATABASE = SQLite3::Database.new("./database/beer_wiki.db")
 

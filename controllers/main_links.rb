@@ -8,7 +8,12 @@ get "/search_name_results" do
 end
 
 get "/list_all_beer" do
-  @beer = Beer.all  
+  if session[:user_id]
+    @current_user = User.find(session[:user_id])
+  else
+    redirect "/"
+  end
+  @beer = Beer.all
   erb :"search/list_all_beer"
 end
 
@@ -34,3 +39,21 @@ get "/brewery/:brewery_id" do
   @beer_brewery = @brewery_info.beers
   erb :"search/breweries"
 end
+
+get "/logout" do
+  session.clear
+  redirect "/"
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
