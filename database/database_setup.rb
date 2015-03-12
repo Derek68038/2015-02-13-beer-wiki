@@ -11,3 +11,5 @@ DATABASE.execute("CREATE TABLE IF NOT EXISTS breweries (id INTEGER PRIMARY KEY, 
                   description TEXT)")
 
 DATABASE.execute("CREATE TABLE IF NOT EXISTS beers_breweries (beer_id INTEGER, brewery_id INTEGER)")
+
+DATABASE.execute("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, user TEXT, password TEXT)") 
