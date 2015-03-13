@@ -18,7 +18,7 @@ post "/add_style_results" do
   redirect "/beer_styles"
 end
 
-get "add_brewery" do
+get "/add_brewery" do
   erb :"add/add_brewery"
 end
   
