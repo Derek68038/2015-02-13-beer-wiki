@@ -8,8 +8,10 @@ require "bcrypt"
 require "pry"
 enable :sessions
 
-DATABASE = SQLite3::Database.new("./database/beer_wiki.db")
-
+# DATABASE = SQLite3::Database.new("./database/beer_wiki.db")
+configure :development do
+ set :database, {adapter: "sqlite3", database: "./database/beer_wiki.db"}
+end
 
 require_relative "database/database_methods"
 require_relative "helpers/helper"
@@ -22,6 +24,6 @@ require_relative "controllers/main_pages"
 require_relative "controllers/main_links"
 require_relative "controllers/delete_routes"
 require_relative "controllers/add_routes"
-set :database, {adapter: "sqlite3", database: "./database/beer_wiki.db"}
+
 
 helpers Helper
