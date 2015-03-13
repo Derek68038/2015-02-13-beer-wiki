@@ -2,7 +2,7 @@ require 'rubygems'
 require 'bundler/setup'
 require "sinatra/activerecord"
 require "sinatra"
-require "sqlite3"
+# require "sqlite3"
 require "beer_mapping"
 require "bcrypt"
 require "pry"
