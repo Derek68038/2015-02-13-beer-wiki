@@ -1,4 +1,3 @@
-DATABASE.results_as_hash = true
 
 unless ActiveRecord::Base.connection.table_exists?(:styles)
   ActiveRecord::Base.connection.create_table :styles do |t|
