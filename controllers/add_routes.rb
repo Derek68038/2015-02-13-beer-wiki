@@ -8,8 +8,15 @@ post "/add_beer_results" do
   redirect "/list_all_beer"
 end
 
+get "/add_style" do
+  @style = Style.new(params)
+  @style.save
+  redirect "/beer_styles"
+end
+
 get "/add_brewery" do
-  erb :"add/add_brewery"
+  @brewery = Brewery
+  # erb :"add/add_brewery"
 end
 
 get "/add_brewery_results" do
