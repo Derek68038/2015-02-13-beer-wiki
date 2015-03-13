@@ -2,19 +2,27 @@ require 'rubygems'
 require 'bundler/setup'
 require "sinatra/activerecord"
 require "sinatra"
-# require "sqlite3"
+
+configure :development do
+  require "sqlite3"
+end
+
 require "beer_mapping"
 require "bcrypt"
 require "pry"
 enable :sessions
 
-# DATABASE = SQLite3::Database.new("./database/beer_wiki.db")
+configure :development do
+  DATABASE = SQLite3::Database.new("./database/beer_wiki.db")
+end
+
 configure :development do
  set :database, {adapter: "sqlite3", database: "./database/beer_wiki.db"}
 end
 
 configure :production do
  db = URI.parse(ENV['DATABASE_URL'])
+ 
  ActiveRecord::Base.establish_connection(
  :adapter => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
  :host => db.host,
