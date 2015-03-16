@@ -1,31 +1,23 @@
-# Class: Style
+# Class: User
 #
-# Creates new style objects/records for styles table in beer wiki database.
+# Creates new user records for users table in beer wiki database.
 # 
 # Attributes:
-# @id         - Integer: the primary key identifier for each style.
-# @type       - String: the style name. 
-# @color      - String: the color range.
-# @bitterness - String: the bitterness range.
-# @alcohol    - String: the alcohol range.
-# @flavor     - String: a short description of the style flavor.
-# @related    - String: related beer styles.
+# @user       - String: the username.
+# @password   - String: the user's password. 
 #
 # Public Methods:
 # None
 #
 # Private Methods:
-# #initialize
+# None
 
 class User < ActiveRecord::Base
   
   include BCrypt
   
-  def create
-    @user = User.new(params[:user])
-    @user.password = params[:password]
-    @user.save!
-  end
+  validates :user, presence: true
+  validates :password, presence: true
   
 end
   
